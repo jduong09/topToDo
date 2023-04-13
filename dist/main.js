@@ -1,0 +1,1 @@
+(()=>{const o=function(o){this.name=o;let t=[];return{name:o,addTodo:o=>{t.push(o)},todos:t}}("Today");o.addTodo(function(o,t,i,d,e){this.title="Code",this.description="Code",this.dueDate="09/09/1996",this.priority="High",this.notes="Code"}()),console.log(o)})();

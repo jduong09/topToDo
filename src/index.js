@@ -49,7 +49,7 @@ function Project(name) {
     todos.push(todo);
   }
 
-  return { name, addTodo };
+  return { name, addTodo, todos };
 }
 
 // Dashboard
@@ -64,4 +64,22 @@ function Project(name) {
 
 // Ability to create/update/ delete todo.
 
-// ability to create/update/delete project/
+// ability to create/update/delete project
+
+// First interface is Todays ToDos
+
+function ToDoController() {
+  const createTodo = (formData) => {
+    FormController.createTodo(formData);
+  }
+
+  const editTodo = (formData) => {
+    FormController.editTodo(formData);
+  }
+}
+
+
+// On Script Load, let's do some basic stuff
+const todaysProject = Project('Today');
+todaysProject.addTodo(ToDo('Code', 'Code', '09/09/1996', 'High', 'Code'));
+console.log(todaysProject);
