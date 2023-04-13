@@ -59,69 +59,24 @@ function Project(name) {
 
 // First interface is Todays Todos
 
-/*
-const ToDoController = () => {
-  const createTodo = (formData) => {
-    const todo = FormController.createTodo(formData);
-
-    projectToday.addTodo(todo);
-  }
-
-  const editTodo = (formData) => {
-    FormController.editTodo(formData);
-  }
-
-  return { createTodo }; 
-}
-
-*/
-
 const createDOM = () => {
-  const divMain = document.createElement('div');
-  divMain.id = 'content';
-  const btnCreateTodo = document.createElement('button');
-  btnCreateTodo.innerHTML = '+';
+  const btnCreateTodo = document.getElementById('btn-create-todo');
 
   btnCreateTodo.addEventListener('click', (e) => {
     e.preventDefault();
   });
-
-  divMain.append(btnCreateTodo);
-  document.querySelector('body').appendChild(divMain);
 }
 
 // Function to create 'New Todo' Form and append to Dom.
 const createForm = () => {
-  const divMain = document.getElementById('content');
+  const divDashboard = document.getElementById('dashboard');
+  const dashboardTodosList = document.getElementById('dashboard-todos-list');
   const form = document.createElement('form');
+  
+  divDashboard.insertBefore(form, dashboardTodosList);
   form.id = 'form-create-todo';
 
-  // Create new todo form
-  // input[text] Title
-  // input[text] Description
-  // input[date] Due Date
-  // select Priority
-  // textArea Notes
   const inputs = ['title', 'description', 'due-date', 'priority', 'notes'];
-
-  /*
-  const inputTitle = document.createElement('input');
-  inputTitle.id = 'title';
-  inputTitle.setAttribute('name', 'title');
-  inputTitle.type = 'text';
-
-
-  const inputDescription = document.createElement('input');
-  inputDescription.id = 'description';
-  inputDescription.setAttribute('name', 'description');
-  inputDescription.type = 'text';
-
-  const inputDueDate = document.createElement('input');
-  inputDueDate.id = 'due-date';
-  inputDueDate.setAttribute('name', 'due-date');
-  inputDueDate.type = 'date';
-  */
-
  
   for (let i = 0; i < inputs.length; i++) {
     const inputName = inputs[i];
@@ -187,10 +142,9 @@ const createForm = () => {
   });
 
   form.appendChild(btnSubmit);
-
-  divMain.append(form);
 }
-// returns a 6 element HTML Collection
+
+// formData returns a 6 element HTML Collection
 // We iterate to 5, while skipping the last one because that is the submit button.
 const FormController = {
   createTodo: (formData) => {
@@ -202,12 +156,12 @@ const FormController = {
 
 const DomUpdater = {
   addNewTodo: (todo) => {
-    const divContent = document.getElementById('content');
+    const divTodosList = document.getElementById('dashboard-todos-list');
     
     const divTodo = document.createElement('div');
     divTodo.innerHTML = `${todo.title}, ${todo.dueDate}`;
 
-    divContent.append(divTodo);
+    divTodosList.append(divTodo);
   }
 }
 
