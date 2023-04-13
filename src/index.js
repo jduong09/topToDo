@@ -131,17 +131,20 @@ const createForm = () => {
 
     if (inputName === 'title' || inputName === 'description') {
       const input = document.createElement('input');
+      label.innerHTML = `${inputName.slice(0, 1).toUpperCase() + inputName.slice(1)}:`;
       input.id = inputName;
       input.setAttribute('name', inputName);
       input.type = 'text';
       form.append(label, input);
     } else if (inputName === 'due-date') {
+      label.innerHTML = 'Due Date:';
       const input = document.createElement('input');
       input.id = inputName;
       input.setAttribute('name', inputName);
       input.type = 'date';
       form.append(label, input);
     } else if (inputName === 'priority') {
+      label.innerHTML = 'Priority:';
       const select = document.createElement('select');
       select.setAttribute('name', inputName);
       const optionLow = document.createElement('option');
@@ -159,6 +162,7 @@ const createForm = () => {
       select.append(optionLow, optionMedium, optionHigh);
       form.append(label, select);
     } else {
+      label.innerHTML = 'Notes:';
       const textArea =  document.createElement('textarea');
       textArea.id = inputName;
       textArea.setAttribute('name', inputName);
