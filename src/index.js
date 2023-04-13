@@ -20,17 +20,6 @@
   Read Todo
   Update Todo
   Delete Todo
-
-  To do object is an object that will be displayed as something that needs to be done.
-
-  Project
-  Constructor() {
-    array = [];
-  }
-
-  readToDos
-  Groups of Todos.
-  [ToDo, ToDo, ToDo]
 */
 
 function ToDo(title, description, dueDate, priority, notes) {
@@ -64,11 +53,11 @@ function Project(name) {
 
 // Todos based on priority?
 
-// Ability to create/update/ delete todo.
+// Ability to create/update/delete todo.
 
-// ability to create/update/delete project
+// Ability to create/update/delete project
 
-// First interface is Todays ToDos
+// First interface is Todays Todos
 
 /*
 const ToDoController = () => {
@@ -76,7 +65,6 @@ const ToDoController = () => {
     const todo = FormController.createTodo(formData);
 
     projectToday.addTodo(todo);
-    console.log(projectToday);
   }
 
   const editTodo = (formData) => {
@@ -96,14 +84,13 @@ const createDOM = () => {
 
   btnCreateTodo.addEventListener('click', (e) => {
     e.preventDefault();
-
-    console.log(e);
   });
 
   divMain.append(btnCreateTodo);
   document.querySelector('body').appendChild(divMain);
 }
 
+// Function to create 'New Todo' Form and append to Dom.
 const createForm = () => {
   const divMain = document.getElementById('content');
   const form = document.createElement('form');
