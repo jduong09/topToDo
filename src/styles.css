@@ -1,0 +1,35 @@
+body {
+  font-family: sans-serif;
+}
+
+header, #aside-nav, #dashboard-header {
+  padding: 1rem;
+}
+
+header, #content, #dashboard-header {
+  border-bottom: 2px solid black;
+}
+
+#content {
+  display: flex;
+}
+
+#aside-nav {
+  border-right: 2px solid black;
+}
+
+#dashboard {
+  flex: 1;
+}
+
+#dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#form-create-todo {
+  display: grid;
+  grid-template-rows: repeat(6, auto);
+  grid-template-columns: 50% 50%;
+}
