@@ -156,12 +156,12 @@ const FormController = {
 
 const DomUpdater = {
   addNewTodo: (todo) => {
-    const divTodosList = document.getElementById('dashboard-todos-list');
+    const listTodos = document.getElementById('list-todos');
     
-    const divTodo = document.createElement('div');
-    divTodo.innerHTML = `${todo.title}, ${todo.dueDate}`;
+    const listItemTodo = document.createElement('li');
+    listItemTodo.innerHTML = `${todo.title}, ${todo.dueDate}`;
 
-    divTodosList.append(divTodo);
+    listTodos.append(listItemTodo);
   }
 }
 
