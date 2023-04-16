@@ -2,7 +2,7 @@ body {
   font-family: sans-serif;
 }
 
-header, #aside-nav, #dashboard-header {
+header, #aside-nav, #dashboard-header, #list-todos > li {
   padding: 1rem;
 }
 
@@ -33,3 +33,9 @@ header, #content, #dashboard-header {
   grid-template-rows: repeat(6, auto);
   grid-template-columns: 50% 50%;
 }
+
+#list-todos > li {
+  margin-bottom: .5rem;
+  background-color: hsl(197, 71%, 73%);
+}
+
