@@ -39,3 +39,7 @@ header, #content, #dashboard-header {
   background-color: hsl(197, 71%, 73%);
 }
 
+#list-todos > li:last-of-type {
+  margin-bottom: 0;
+}
+
