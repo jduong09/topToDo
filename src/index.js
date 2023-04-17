@@ -58,15 +58,6 @@ function Project(name) {
 // Ability to create/update/delete project
 
 // First interface is Todays Todos
-
-const createDOM = () => {
-  const btnCreateTodo = document.getElementById('btn-create-todo');
-
-  btnCreateTodo.addEventListener('click', (e) => {
-    e.preventDefault();
-  });
-}
-
 // Function to create 'New Todo' Form and append to Dom.
 const createForm = () => {
   const divDashboard = document.getElementById('dashboard');
@@ -75,6 +66,7 @@ const createForm = () => {
   
   divDashboard.insertBefore(form, dashboardTodosList);
   form.id = 'form-create-todo';
+  form.classList.add('hide');
 
   const inputs = ['title', 'description', 'due-date', 'priority', 'notes'];
  
@@ -140,6 +132,7 @@ const createForm = () => {
     e.preventDefault();
     
     FormController.createTodo(form.elements);
+    form.classList.add('hide');
   });
 
   form.appendChild(btnSubmit);
@@ -203,6 +196,20 @@ const DomUpdater = {
 }
 
 // On Script Load, let's do some basic stuff
-createDOM();
 createForm();
+(function() {
+  const btnCreateTodo = document.getElementById('btn-create-todo');
+  const formCreateTodo = document.getElementById('form-create-todo');
+
+  btnCreateTodo.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // On clicking the plus button, if form is hidden, then unhide and display form, else hide it.
+    if (formCreateTodo.classList.contains('hide')) {
+      formCreateTodo.classList.remove('hide');
+    } else {
+      formCreateTodo.classList.add('hide');
+    }
+  });
+})();
 const projectToday = Project('today');

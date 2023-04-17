@@ -2,11 +2,15 @@ body {
   font-family: sans-serif;
 }
 
+.hide {
+  display: none !important;
+}
+
 header, #aside-nav, #dashboard-header, #list-todos > li {
   padding: 1rem;
 }
 
-header, #content, #dashboard-header, #form-create-todo {
+header, #content {
   border-bottom: 2px solid black;
 }
 
@@ -32,6 +36,7 @@ header, #content, #dashboard-header, #form-create-todo {
   display: grid;
   grid-template-rows: repeat(6, auto);
   grid-template-columns: 50% 50%;
+  border-top: 2px solid black;
 }
 
 #list-todos > li {
@@ -39,6 +44,10 @@ header, #content, #dashboard-header, #form-create-todo {
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid black;
+}
+
+#list-todos > li:first-of-type {
+  border-top: 2px solid black;
 }
 
 #list-todos > li:last-of-type {
