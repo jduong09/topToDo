@@ -6,7 +6,7 @@ header, #aside-nav, #dashboard-header, #list-todos > li {
   padding: 1rem;
 }
 
-header, #content, #dashboard-header {
+header, #content, #dashboard-header, #form-create-todo {
   border-bottom: 2px solid black;
 }
 
@@ -35,11 +35,37 @@ header, #content, #dashboard-header {
 }
 
 #list-todos > li {
-  margin-bottom: .5rem;
-  background-color: hsl(197, 71%, 73%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
 }
 
 #list-todos > li:last-of-type {
   margin-bottom: 0;
+  border-bottom: 0;
 }
 
+.todo-information {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.todo-description {
+  font-size: .85rem;
+  color: aquamarine;
+}
+
+.list-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.list-buttons > li {
+  margin-left: .5rem;
+}
