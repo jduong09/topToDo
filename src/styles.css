@@ -35,17 +35,15 @@ header, #content, #dashboard-header, #form-create-todo {
 }
 
 #list-todos > li {
-  margin-bottom: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid black;
 }
 
 #list-todos > li:last-of-type {
   margin-bottom: 0;
-}
-
-#list-todos > li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  border-bottom: 0;
 }
 
 .todo-information {
@@ -71,4 +69,3 @@ header, #content, #dashboard-header, #form-create-todo {
 .list-buttons > li {
   margin-left: .5rem;
 }
-
