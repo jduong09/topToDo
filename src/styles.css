@@ -36,11 +36,21 @@ header, #content {
   align-items: center;
 }
 
+#div-form {
+  border-top: 2px solid hsl(0, 0%, 0%);
+  padding: 1rem;
+}
+
+#div-form > h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
 #form-create-edit-todo {
   display: grid;
   grid-template-rows: repeat(6, auto);
   grid-template-columns: 50% 50%;
-  border-top: 2px solid hsl(0, 0%, 0%);
 }
 
 #button-submit {

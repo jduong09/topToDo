@@ -137,32 +137,36 @@ const DomUpdater = {
   }
 };
 // On Script Load, let's do some basic stuff
+// IIFE for adding event listener to submit button in todo form.
 (function() {
+  const divForm = document.getElementById('div-form');
   const form = document.getElementById('form-create-edit-todo');
   const btnSubmit = document.getElementById('button-submit');
  
   btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
     
-    FormController.createTodo(form.elements);
-    form.classList.add('hide');
+    if (form.getAttribute('data-purpose') === 'create') {
+      FormController.createTodo(form.elements);
+    } else {
+      FormController.editTodo(form.elements);
+    }
+    divForm.classList.add('hide');
   });
-
-  form.appendChild(btnSubmit);
 })();
 
 (function() {
   const btnCreateTodo = document.getElementById('btn-create-todo');
-  const formTodo = document.getElementById('form-create-edit-todo');
+  const divForm = document.getElementById('div-form');
 
   btnCreateTodo.addEventListener('click', (e) => {
     e.preventDefault();
 
     // On clicking the plus button, if form is hidden, then unhide and display form, else hide it.
-    if (formTodo.classList.contains('hide')) {
-      formTodo.classList.remove('hide');
+    if (divForm.classList.contains('hide')) {
+      divForm.classList.remove('hide');
     } else {
-      formTodo.classList.add('hide');
+      divForm.classList.add('hide');
     }
   });
 })();
