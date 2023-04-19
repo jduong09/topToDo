@@ -151,7 +151,7 @@ const DomUpdater = {
 
 
 
-    
+
     const listItemDelete = document.createElement('li');
     const btnDelete = document.createElement('button');
     btnDelete.classList.add('btn-todo');
@@ -207,10 +207,9 @@ const DomUpdater = {
   },
   updateTodo: (uuid, todoInformation) => {
     const liUuid = document.querySelector(`li[data-uuid="${uuid}"]`);
-    console.log(liUuid);
-    console.log(todoInformation);
-
-    
+    const divTodoInformation = liUuid.children[0];
+    divTodoInformation.children[0].innerHTML = todoInformation._title;
+    divTodoInformation.children[1].innerHTML = todoInformation._description;
   },
 };
 // On Script Load, let's do some basic stuff
