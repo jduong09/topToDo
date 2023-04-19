@@ -16,9 +16,9 @@ import { v4 as uuidv4 } from 'uuid';
   ToDo Controller
 
   CRUD
-  Create Todo
-  Read Todo
-  Update Todo
+  Create Todo (done)
+  Read Todo 
+  Update Todo (done)
   Delete Todo
 */
 
@@ -33,10 +33,6 @@ const ToDo = (title, description, dueDate, priority, notes) => {
 
   const editTodo = (formData) => {
     // formData is an html collection array
-    /*
-    formData[0] = title;
-    formData
-    */
     _title = formData[0].value;
     _description = formData[1].value;
     _dueDate = formData[2].value;
@@ -75,12 +71,6 @@ function Project(name) {
 
 // Ability to create/update/delete project
 
-/*
-const editForm = () => {
-  
-}
-*/
-
 // formData returns a 6 element HTML Collection
 // We iterate to 5, while skipping the last one because that is the submit button.
 const FormController = {
@@ -88,6 +78,7 @@ const FormController = {
     const newTodo = ToDo(formData[0].value, formData[1].value, formData[2].value, formData[3].value, formData[4].value);
     todos[newTodo.uuid] = newTodo;
     projectToday.addTodo(newTodo);
+    DomUpdater.clearForm();
     DomUpdater.addNewTodo(newTodo);
   },
   
@@ -95,6 +86,8 @@ const FormController = {
     const todo = todos[uuid];
     todo.editTodo(formData);
     DomUpdater.updateTodo(uuid, todo.getInfo());
+    DomUpdater.clearForm();
+    DomUpdater.setFormPurpose('create');
   }
 };
 
@@ -137,13 +130,12 @@ const DomUpdater = {
     // Add event listener to btnEdit for editing todo.
     btnEdit.addEventListener('click', (e) => {
       e.preventDefault();
-      const formEdit = document.getElementById('form-create-edit-todo');
 
       const divParent = e.currentTarget.parentElement.parentElement.parentElement;
       const uuid = divParent.getAttribute('data-uuid');
 
       DomUpdater.editTodo(uuid);
-      formEdit.setAttribute('data-purpose', 'edit');
+      DomUpdater.setFormPurpose('edit');
 
       // Need to change form to edit mode and populate input values with todo values.
       // FormController.editTodo(uuid, formEdit.elements);
@@ -169,6 +161,9 @@ const DomUpdater = {
     // Add event listener to btnDelete for deleting todo.
 
 
+
+    // Add Expand button
+    // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
 
     listButtons.append(listItemEdit, listItemDelete);
     listItemTodo.appendChild(listButtons);
@@ -211,6 +206,34 @@ const DomUpdater = {
     divTodoInformation.children[0].innerHTML = todoInformation._title;
     divTodoInformation.children[1].innerHTML = todoInformation._description;
   },
+  clearForm: () => {
+    const form = document.getElementById('form-create-edit-todo');
+    const formElements = form.elements;
+
+    for (let i = 0; i < 5; i++) {
+      if (i === 3) {
+        console.log(formElements[3]);
+        formElements[3].children[0].setAttribute('selected', 'selected');
+        continue;
+      }
+      formElements[i].value = '';
+    }
+  },
+  setFormPurpose: (type) => {
+    const form = document.getElementById('form-create-edit-todo');
+    const headerForm = document.getElementById('header-form');
+    const btnSubmit = document.getElementById('button-submit');
+
+    if (type === 'edit') {
+      headerForm.innerHTML = 'Edit';
+      btnSubmit.innerHTML = 'Edit Todo';
+    } else {
+      headerForm.innerHTML = 'Create';
+      btnSubmit.innerHTML = 'Create Todo';
+    }
+    
+    form.setAttribute('data-purpose', type);
+  }
 };
 // On Script Load, let's do some basic stuff
 // IIFE for adding event listener to submit button in todo form.
