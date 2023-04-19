@@ -19,5 +19,8 @@
     "url": "https://github.com/jduong09/topToDo/issues"
   },
   "homepage": "https://github.com/jduong09/topToDo#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "uuid": "^9.0.0"
+  }
 }
