@@ -70,9 +70,6 @@ function Project(name) {
 // Ability to create/update/delete todo.
 
 // Ability to create/update/delete project
-
-// formData returns a 6 element HTML Collection
-// We iterate to 5, while skipping the last one because that is the submit button.
 function createTodoListItem(todo) {
   const todoInformation = todo.getInfo();
   
@@ -145,16 +142,32 @@ function createTodoListItem(todo) {
     // Update Dom, with todo being deleted.
   });
 
-
   // Add Expand button
   // <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+  const listItemDetails = document.createElement('li');
+  const btnDetails = document.createElement('button');
+  btnDetails.classList.add('btn-todo');
+  const svgDetail = document.createElementNS(xmlns, 'svg');
+  btnDetails.appendChild(svgDetail);
+  listItemDetails.appendChild(btnDetails);
+  svgDetail.setAttributeNS(null, 'viewBox', '0 0 512 512');
+  svgDetail.setAttributeNS(null, 'width', svgBtnWidth);
+  svgDetail.setAttributeNS(null, 'height', svgBtnHeight);
 
-  listButtons.append(listItemEdit, listItemDelete);
+  const pathDetail = document.createElementNS(xmlns, 'path');
+  svgDetail.appendChild(pathDetail);
+  pathDetail.setAttributeNS(null, 'd', 'M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z');
+
+  // Add event listener for btnDetails.
+
+  listButtons.append(listItemEdit, listItemDelete, listItemDetails);
   listItemTodo.appendChild(listButtons);
   
   return listItemTodo;
 }
 
+// formData returns a 6 element HTML Collection
+// We iterate to 5, while skipping the last one because that is the submit button.
 const FormController = {
   createTodo: (formData) => {
     const newTodo = ToDo(formData[0].value, formData[1].value, formData[2].value, formData[3].value, formData[4].value);
@@ -247,7 +260,6 @@ const DomUpdater = {
   updateTodoList: () => {
     const listTodos = document.getElementById('list-todos');
     listTodos.innerHTML = '';
-    // Iterate through all todos, 
     for (const todo in todos) {
       const listItemTodo = createTodoListItem(todos[todo]);
       listTodos.appendChild(listItemTodo);
