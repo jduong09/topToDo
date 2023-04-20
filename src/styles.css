@@ -63,6 +63,7 @@ header, #content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   border-bottom: 2px solid hsl(0, 0%, 0%);
 }
 
@@ -97,4 +98,16 @@ header, #content {
 
 .list-buttons > li {
   margin-left: .5rem;
+}
+
+.todo-information, .list-buttons {
+  margin-bottom: 1rem;
+}
+
+.todo-details {
+  flex: 1 100%;
+}
+
+.list-details > li {
+  margin-bottom: .5rem;
 }

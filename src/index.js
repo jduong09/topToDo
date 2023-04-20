@@ -74,10 +74,24 @@ function createTodoListItem(todo) {
   const todoInformation = todo.getInfo();
   
   const listItemTodo = document.createElement('li');
+  /*
+    let _title = title;
+    let _description = description;
+    let _dueDate = dueDate;
+    let _priority = priority;
+    let _notes = notes;
+  */
   listItemTodo.innerHTML = `
     <div class="todo-information">
       <h3 class="todo-title">${todoInformation._title}</h3>
       <span class="todo-description">${todoInformation._description}</span>
+    </div>
+    <div class="todo-details hide">
+      <ul class="list-details">
+        <li>Due Date: ${todoInformation._dueDate}</li>
+        <li>Priority: ${todoInformation._priority}</li>
+        <li>Notes: ${todoInformation._notes}</li>
+      </ul>
     </div>
   `;
 
@@ -159,9 +173,25 @@ function createTodoListItem(todo) {
   pathDetail.setAttributeNS(null, 'd', 'M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z');
 
   // Add event listener for btnDetails.
+  btnDetails.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // reveal div-details
+    const divParent = e.currentTarget.parentElement.parentElement.parentElement;
+    const todoDetails = divParent.children[2];
+
+    if (todoDetails.classList.contains('hide')) {
+      todoDetails.classList.remove('hide');
+    } else {
+      todoDetails.classList.add('hide');
+    }
+  });
 
   listButtons.append(listItemEdit, listItemDelete, listItemDetails);
-  listItemTodo.appendChild(listButtons);
+
+  const todoDetails = listItemTodo.children[1];
+  listItemTodo.insertBefore(listButtons, todoDetails);
+  // listItemTodo.appendChild(listButtons);
   
   return listItemTodo;
 }
