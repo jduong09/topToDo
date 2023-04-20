@@ -2,12 +2,20 @@ body {
   font-family: sans-serif;
 }
 
+.hide {
+  display: none !important;
+}
+
+#btn-create-todo, #button-submit, .btn-todo {
+  cursor: pointer;
+}
+
 header, #aside-nav, #dashboard-header, #list-todos > li {
   padding: 1rem;
 }
 
-header, #content, #dashboard-header, #form-create-todo {
-  border-bottom: 2px solid black;
+header, #content {
+  border-bottom: 2px solid hsl(0, 0%, 0%);
 }
 
 #content {
@@ -15,7 +23,7 @@ header, #content, #dashboard-header, #form-create-todo {
 }
 
 #aside-nav {
-  border-right: 2px solid black;
+  border-right: 2px solid hsl(0, 0%, 0%);
 }
 
 #dashboard {
@@ -28,17 +36,39 @@ header, #content, #dashboard-header, #form-create-todo {
   align-items: center;
 }
 
-#form-create-todo {
+#div-form {
+  border-top: 2px solid hsl(0, 0%, 0%);
+  padding: 1rem;
+}
+
+#div-form > h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+#form-create-edit-todo {
   display: grid;
   grid-template-rows: repeat(6, auto);
   grid-template-columns: 50% 50%;
+}
+
+#button-submit {
+  padding: 1rem;
+  border: 2px solid hsl(0, 0%, 0%);
+  background-color: hsl(160, 100%, 75%);
 }
 
 #list-todos > li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid black;
+  flex-wrap: wrap;
+  border-bottom: 2px solid hsl(0, 0%, 0%);
+}
+
+#list-todos > li:first-of-type {
+  border-top: 2px solid hsl(0, 0%, 0%);
 }
 
 #list-todos > li:last-of-type {
@@ -58,7 +88,7 @@ header, #content, #dashboard-header, #form-create-todo {
 
 .todo-description {
   font-size: .85rem;
-  color: aquamarine;
+  color: hsl(160, 100%, 75%);
 }
 
 .list-buttons {
@@ -68,4 +98,16 @@ header, #content, #dashboard-header, #form-create-todo {
 
 .list-buttons > li {
   margin-left: .5rem;
+}
+
+.todo-information, .list-buttons {
+  margin-bottom: 1rem;
+}
+
+.todo-details {
+  flex: 1 100%;
+}
+
+.list-details > li {
+  margin-bottom: .5rem;
 }
