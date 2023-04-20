@@ -212,7 +212,6 @@ const DomUpdater = {
 
     for (let i = 0; i < 5; i++) {
       if (i === 3) {
-        console.log(formElements[3]);
         formElements[3].children[0].setAttribute('selected', 'selected');
         continue;
       }
