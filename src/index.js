@@ -19,7 +19,7 @@ import { v4 as uuidv4 } from 'uuid';
   Create Todo (done)
   Read Todo 
   Update Todo (done)
-  Delete Todo
+  Delete Todo (done)
 */
 
 const ToDo = (title, description, dueDate, priority, notes) => {
@@ -88,9 +88,9 @@ function createTodoListItem(todo) {
     </div>
     <div class="todo-details hide">
       <ul class="list-details">
-        <li>Due Date: ${todoInformation._dueDate}</li>
-        <li>Priority: ${todoInformation._priority}</li>
-        <li>Notes: ${todoInformation._notes}</li>
+        <li><b>Due Date:</b> ${todoInformation._dueDate}</li>
+        <li><b>Priority:</b> ${todoInformation._priority}</li>
+        <li><b>Notes:</b> ${todoInformation._notes}</li>
       </ul>
     </div>
   `;
@@ -182,8 +182,10 @@ function createTodoListItem(todo) {
 
     if (todoDetails.classList.contains('hide')) {
       todoDetails.classList.remove('hide');
+      divParent.classList.add('open');
     } else {
       todoDetails.classList.add('hide');
+      divParent.classList.remove('open');
     }
   });
 

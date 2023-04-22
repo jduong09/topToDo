@@ -36,6 +36,11 @@ header, #content {
   align-items: center;
 }
 
+#dashboard-header > span {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 #div-form {
   border-top: 2px solid hsl(0, 0%, 0%);
   padding: 1rem;
@@ -51,12 +56,29 @@ header, #content {
   display: grid;
   grid-template-rows: repeat(6, auto);
   grid-template-columns: 50% 50%;
+  gap: 1rem 0;
+}
+
+#form-create-edit-todo > label {
+  font-weight: 700;
+}
+
+#form-create-edit-todo > input, #form-create-edit-todo > select, #form-create-edit-todo > textarea {
+  padding: .75rem 1rem;
+  border: 2px solid hsl(300, 100%, 25%);
+  border-radius: 4px;
 }
 
 #button-submit {
-  padding: 1rem;
-  border: 2px solid hsl(0, 0%, 0%);
-  background-color: hsl(160, 100%, 75%);
+  padding: .75rem 1.5rem;
+  grid-column: 1 / 3;
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: 700;
+  border: 2px solid hsl(300, 100%, 25%);
+  border-radius: 4px;
+  background-color: hsl(300, 100%, 25%);
+  color: hsl(0, 0%, 100%);
 }
 
 #list-todos > li {
@@ -87,8 +109,9 @@ header, #content {
 }
 
 .todo-description {
-  font-size: .85rem;
-  color: hsl(160, 100%, 75%);
+  font-size: 1rem;
+  font-weight: 700;
+  color: hsl(300, 100%, 25%);
 }
 
 .list-buttons {
@@ -100,7 +123,7 @@ header, #content {
   margin-left: .5rem;
 }
 
-.todo-information, .list-buttons {
+#list-todos > li.open > .todo-information, #list-todos > li.open > .list-buttons {
   margin-bottom: 1rem;
 }
 
@@ -110,4 +133,18 @@ header, #content {
 
 .list-details > li {
   margin-bottom: .5rem;
+}
+
+.list-details > li > b {
+  font-weight: 700;
+}
+
+/* Active States */
+#btn-create-todo:hover > svg > path {
+  fill: hsl(300, 100%, 25%);
+}
+
+#button-submit:hover {
+  color: hsl(300, 100%, 25%);
+  background-color: hsl(0, 0%, 100%);
 }
