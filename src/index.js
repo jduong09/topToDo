@@ -1,27 +1,6 @@
 /* Build from the inside out */
 import { v4 as uuidv4 } from 'uuid';
 /* To DO App */
-
-/* 
-  To Do Object
-  Constructor
-  {
-    Title: 'Hello'
-    Description: 'Hello i need to do this'
-    Due Date: MM/DD/YYYY
-    priority: Low/Med/High
-    notes: 'fjkdafjkad;l'
-  }
-
-  ToDo Controller
-
-  CRUD
-  Create Todo (done)
-  Read Todo 
-  Update Todo (done)
-  Delete Todo (done)
-*/
-
 const ToDo = (title, description, dueDate, priority, notes) => {
   let _title = title;
   let _description = description;
@@ -74,13 +53,6 @@ function createTodoListItem(todo) {
   const todoInformation = todo.getInfo();
   
   const listItemTodo = document.createElement('li');
-  /*
-    let _title = title;
-    let _description = description;
-    let _dueDate = dueDate;
-    let _priority = priority;
-    let _notes = notes;
-  */
   listItemTodo.innerHTML = `
     <div class="todo-information">
       <h3 class="todo-title">${todoInformation._title}</h3>
@@ -198,8 +170,6 @@ function createTodoListItem(todo) {
   return listItemTodo;
 }
 
-// formData returns a 6 element HTML Collection
-// We iterate to 5, while skipping the last one because that is the submit button.
 const FormController = {
   createTodo: (formData) => {
     const newTodo = ToDo(formData[0].value, formData[1].value, formData[2].value, formData[3].value, formData[4].value);
@@ -324,7 +294,6 @@ const DomUpdater = {
   btnCreateTodo.addEventListener('click', (e) => {
     e.preventDefault();
 
-    // On clicking the plus button, if form is hidden, then unhide and display form, else hide it.
     if (divForm.classList.contains('hide')) {
       divForm.classList.remove('hide');
     } else {
@@ -332,5 +301,6 @@ const DomUpdater = {
     }
   });
 })();
+
 const projectToday = Project('today');
 let todos = {};
