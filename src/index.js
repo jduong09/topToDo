@@ -268,6 +268,25 @@ const DomUpdater = {
     }
   }
 };
+
+const formValidate = (formData) => {
+  for (let i = 0; i < 5; i++) {
+    const element = formData[i];
+
+    console.log(element.validity);
+    const adjacentSpan = element.parentElement.children[2];
+    
+    if (!element.validity.valid) {
+      adjacentSpan.innerHTML = 'Invalid';
+      adjacentSpan.classList.remove('hide');
+      return false;
+    } else {
+      adjacentSpan.innerHTML = '';
+      adjacentSpan.classList.add('hide');
+    }
+  }
+  return true;
+}
 // On Script Load, let's do some basic stuff
 // IIFE for adding event listener to submit button in todo form.
 (function() {
@@ -277,13 +296,14 @@ const DomUpdater = {
  
   btnSubmit.addEventListener('click', (e) => {
     e.preventDefault();
-    
-    if (form.getAttribute('data-purpose') === 'create') {
-      FormController.createTodo(form.elements);
+
+    formValidate(form.elements);
+    if (formValidate(form.elements)) {
+      form.getAttribute('data-purpose') === 'create' ? FormController.createTodo(form.elements) : FormController.editTodo(form.getAttribute('data-uuid'), form.elements);
+      divForm.classList.add('hide');
     } else {
-      FormController.editTodo(form.getAttribute('data-uuid'), form.elements);
+      return;
     }
-    divForm.classList.add('hide');
   });
 })();
 

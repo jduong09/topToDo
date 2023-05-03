@@ -30,24 +30,39 @@
         <div id="div-form" class="hide">
           <h2 id="header-form">Create</h2>
           <form id="form-create-edit-todo" data-purpose="create">
-            <label for="title">Title:</label>
-            <input id="title" name="title" type="text" maxlength="49" placeholder="Daily Outdoor Run"/>
+            <p>
+              <label for="title">Title:</label>
+              <input id="title" name="title" type="text" maxlength="49" placeholder="Daily Outdoor Run" required/>
+              <span class="span-error"></span>
+            </p>
 
-            <label for="description">Description:</label>
-            <input id="description" name="description" type="text" maxlength="49" placeholder="Run 10 miles"/>
+            <p>
+              <label for="description">Description:</label>
+              <input id="description" name="description" type="text" maxlength="49" placeholder="Run 10 miles"/>
+              <span class="span-error"></span>
+            </p>
 
-            <label for="due-date">Due Date:</label>
-            <input id="due-date" name="due-date" type="date"/>
+            <p>
+              <label for="due-date">Due Date:</label>
+              <input id="due-date" name="due-date" type="date"/>
+              <span class="span-error"></span>
+            </p>
 
-            <label for="priority">Priority:</label>
-            <select name="priority">
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </select>
+            <p>
+              <label for="priority">Priority:</label>
+              <select name="priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+              </select>
+              <span class="span-error"></span>
+            </p>
 
-            <label for="notes">Notes:</label>
-            <textarea id="notes" name="notes" rows="5" cols="33" placeholder="Contact Justin at..."></textarea>
+            <p>
+              <label for="notes">Notes:</label>
+              <textarea id="notes" name="notes" rows="5" cols="33" placeholder="Contact Justin at..."></textarea>
+              <span class="span-error"></span>
+            </p>
           
             <button id="button-submit" type="submit">Create Todo</button>
           </form>
