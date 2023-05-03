@@ -59,14 +59,20 @@ header, #content {
   gap: 1rem 0;
 }
 
-#form-create-edit-todo > label {
+#form-create-edit-todo > p > label {
   font-weight: 700;
 }
 
-#form-create-edit-todo > input, #form-create-edit-todo > select, #form-create-edit-todo > textarea {
+#form-create-edit-todo > p > input, #form-create-edit-todo > p > select, #form-create-edit-todo > p > textarea {
   padding: .75rem 1rem;
   border: 2px solid hsl(300, 100%, 25%);
   border-radius: 4px;
+}
+
+.span-error {
+  display: block;
+  color: red;
+  margin-top: .25rem;
 }
 
 #button-submit {
